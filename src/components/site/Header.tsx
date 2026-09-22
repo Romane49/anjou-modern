@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { products } from "@/lib/site-data";
+import logoAc from "@/assets/logo-ac.png";
 
 const links = [
   { to: "/", label: "Accueil" },
@@ -16,8 +17,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/70 backdrop-blur-xl">
       <div className="container-site flex h-16 items-center justify-between">
-        <Link to="/" className="font-display text-lg font-semibold tracking-tight">
-          Anjou <span className="text-primary">Confort</span>
+        <Link to="/" className="flex items-center" aria-label="Anjou Confort — accueil">
+          <img src={logoAc} alt="Anjou Confort — Storistes de France" className="h-9 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
