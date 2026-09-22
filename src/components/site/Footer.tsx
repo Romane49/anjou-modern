@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { company } from "@/lib/site-data";
+import logoFull from "@/assets/logo-full.png";
 
 export function Footer() {
   return (
