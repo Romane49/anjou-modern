@@ -10,33 +10,133 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActualitesRouteImport } from './routes/actualites'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ProduitsRouteImport } from './routes/produits'
+import { Route as SuiviCommandeRouteImport } from './routes/suivi-commande'
+import { Route as ActualitesIndexRouteImport } from './routes/actualites.index'
+import { Route as ActualitesSlugRouteImport } from './routes/actualites.$slug'
+import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
+import { Route as ProduitsSlugRouteImport } from './routes/produits.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActualitesRoute = ActualitesRouteImport.update({
+  id: '/actualites',
+  path: '/actualites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProduitsRoute = ProduitsRouteImport.update({
+  id: '/produits',
+  path: '/produits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuiviCommandeRoute = SuiviCommandeRouteImport.update({
+  id: '/suivi-commande',
+  path: '/suivi-commande',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActualitesIndexRoute = ActualitesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ActualitesRoute,
+} as any)
+const ActualitesSlugRoute = ActualitesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ActualitesRoute,
+} as any)
+const ProduitsIndexRoute = ProduitsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProduitsRoute,
+} as any)
+const ProduitsSlugRoute = ProduitsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProduitsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/actualites': typeof ActualitesRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/produits': typeof ProduitsRouteWithChildren
+  '/suivi-commande': typeof SuiviCommandeRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
+  '/produits/$slug': typeof ProduitsSlugRoute
+  '/actualites/': typeof ActualitesIndexRoute
+  '/produits/': typeof ProduitsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/suivi-commande': typeof SuiviCommandeRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
+  '/produits/$slug': typeof ProduitsSlugRoute
+  '/actualites': typeof ActualitesIndexRoute
+  '/produits': typeof ProduitsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/actualites': typeof ActualitesRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/produits': typeof ProduitsRouteWithChildren
+  '/suivi-commande': typeof SuiviCommandeRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
+  '/produits/$slug': typeof ProduitsSlugRoute
+  '/actualites/': typeof ActualitesIndexRoute
+  '/produits/': typeof ProduitsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/actualites'
+    | '/contact'
+    | '/produits'
+    | '/suivi-commande'
+    | '/actualites/$slug'
+    | '/produits/$slug'
+    | '/actualites/'
+    | '/produits/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/suivi-commande'
+    | '/actualites/$slug'
+    | '/produits/$slug'
+    | '/actualites'
+    | '/produits'
+  id:
+    | '__root__'
+    | '/'
+    | '/actualites'
+    | '/contact'
+    | '/produits'
+    | '/suivi-commande'
+    | '/actualites/$slug'
+    | '/produits/$slug'
+    | '/actualites/'
+    | '/produits/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActualitesRoute: typeof ActualitesRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  ProduitsRoute: typeof ProduitsRouteWithChildren
+  SuiviCommandeRoute: typeof SuiviCommandeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +148,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/actualites': {
+      id: '/actualites'
+      path: '/actualites'
+      fullPath: '/actualites'
+      preLoaderRoute: typeof ActualitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produits': {
+      id: '/produits'
+      path: '/produits'
+      fullPath: '/produits'
+      preLoaderRoute: typeof ProduitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/suivi-commande': {
+      id: '/suivi-commande'
+      path: '/suivi-commande'
+      fullPath: '/suivi-commande'
+      preLoaderRoute: typeof SuiviCommandeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/actualites/': {
+      id: '/actualites/'
+      path: '/'
+      fullPath: '/actualites/'
+      preLoaderRoute: typeof ActualitesIndexRouteImport
+      parentRoute: typeof ActualitesRoute
+    }
+    '/actualites/$slug': {
+      id: '/actualites/$slug'
+      path: '/$slug'
+      fullPath: '/actualites/$slug'
+      preLoaderRoute: typeof ActualitesSlugRouteImport
+      parentRoute: typeof ActualitesRoute
+    }
+    '/produits/': {
+      id: '/produits/'
+      path: '/'
+      fullPath: '/produits/'
+      preLoaderRoute: typeof ProduitsIndexRouteImport
+      parentRoute: typeof ProduitsRoute
+    }
+    '/produits/$slug': {
+      id: '/produits/$slug'
+      path: '/$slug'
+      fullPath: '/produits/$slug'
+      preLoaderRoute: typeof ProduitsSlugRouteImport
+      parentRoute: typeof ProduitsRoute
+    }
   }
 }
 
+interface ActualitesRouteChildren {
+  ActualitesSlugRoute: typeof ActualitesSlugRoute
+  ActualitesIndexRoute: typeof ActualitesIndexRoute
+}
+
+const ActualitesRouteChildren: ActualitesRouteChildren = {
+  ActualitesSlugRoute: ActualitesSlugRoute,
+  ActualitesIndexRoute: ActualitesIndexRoute,
+}
+
+const ActualitesRouteWithChildren = ActualitesRoute._addFileChildren(
+  ActualitesRouteChildren,
+)
+
+interface ProduitsRouteChildren {
+  ProduitsSlugRoute: typeof ProduitsSlugRoute
+  ProduitsIndexRoute: typeof ProduitsIndexRoute
+}
+
+const ProduitsRouteChildren: ProduitsRouteChildren = {
+  ProduitsSlugRoute: ProduitsSlugRoute,
+  ProduitsIndexRoute: ProduitsIndexRoute,
+}
+
+const ProduitsRouteWithChildren = ProduitsRoute._addFileChildren(
+  ProduitsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActualitesRoute: ActualitesRouteWithChildren,
+  ContactRoute: ContactRoute,
+  ProduitsRoute: ProduitsRouteWithChildren,
+  SuiviCommandeRoute: SuiviCommandeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
