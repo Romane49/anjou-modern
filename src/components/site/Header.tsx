@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { products } from "@/lib/site-data";
+import logoAc from "@/assets/logo-ac.png";
 
 const links = [
   { to: "/", label: "Accueil" },
