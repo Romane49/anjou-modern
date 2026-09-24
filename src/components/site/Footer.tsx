@@ -8,7 +8,9 @@ export function Footer() {
       <div className="container-site py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div>
-            <img src={logoFull} alt="Anjou Confort — Storistes de France" className="h-12 w-auto" />
+            <div className="inline-block rounded-lg bg-cream px-3 py-2">
+              <img src={logoFull} alt="Anjou Confort — Storistes de France" className="h-10 w-auto" />
+            </div>
             <p className="mt-4 text-sm text-ink-foreground/60 text-pretty">
               Installateur de confort extérieur depuis 1995, à Saint-Martin-du-Fouilloux près d'Angers.
             </p>
